@@ -1,0 +1,61 @@
+-- BANCO DE DADOS SYNAPSYS
+
+-- CRIAÇÃO DO DATABASE
+CREATE DATABASE SynapSys;
+use Synapsys;
+
+-- CADASTRO DO USUÁRIO 
+create table Synapsys.usuario(
+idUsuario int primary key auto_increment not null,
+email varchar(45) not null,
+senha varchar(45) not null,
+tipo varchar(45) not null
+);
+
+-- CADASTRO DE EMPRESA
+create table Synapsys.empresa(
+cnpj int primary key not null,
+razaoSocial varchar(45) not null,
+nomeFantasia varchar(45) not null,
+cidade varchar(45) not null,
+uf char(2) not null,
+inscricaoEstadual varchar(45) not null,
+enderecoCompleto varchar(85) not null,
+telefoneContato int not null,
+emailContato varchar(45) not null,
+fk_Usuario int not null,
+constraint fk_Usuario foreign key (fk_Usuario) references usuario (idUsuario)
+);
+
+-- CADASTRO DE ASSOCIAÇÃO
+create table Synapsys.associar(
+idAssociar int primary key not null,
+fkUsuario int not null,
+fkEmpresa int not null,
+constraint fkUsuario foreign key (fkUsuario) references usuario (idUsuario),
+constraint fkEmpresa foreign key (fkEmpresa) references usuario (cnpj)
+);
+
+-- CADASTRO DE PROPRIEDADE
+create table Synapsys.propriedade(
+idPropriedade int primary key not null,
+uf char(2) not null,
+tamanho int not null,
+cep char(8)not null,
+logradouro varchar(50) not null,
+cidade varchar(45) not null,
+fk_empresa int not null,
+constraint fk_empresa foreign key (fk_empresa) references usuario (cnpj)
+);
+
+-- DADOS CAPTURADOS DAS BASES
+create table Synapsys.dados(
+idDado int primary key not null,
+dia date not null,
+hora time not null,
+direcaoRajada int not null,
+rajadaMax int not null,
+velocidadeHoraria int not null,
+cidade varchar(45) not null,
+estado varchar(45) not null
+);
