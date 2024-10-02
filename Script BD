@@ -1,5 +1,5 @@
 -- BANCO DE DADOS SYNAPSYS
-
+drop database SynapSys;
 -- CRIAÇÃO DO DATABASE
 CREATE DATABASE SynapSys;
 use Synapsys;
@@ -7,13 +7,14 @@ use Synapsys;
 
 -- TIPOS DE USUÁRIO
 create table Synapsys.tipoUsuario(
+idTipo int auto_increment,
 empresario int,
 investidor int,
 empInv int,
 desEmpresario varchar(100),
 desInvestidor varchar(100),
 desEmpInv varchar(100),
-Primary key(empresario, investidor, empInv)
+Primary key(idTipo ,empresario, investidor, empInv)
 );
 
 
@@ -26,7 +27,7 @@ telefoneContato char(11) not null,
 createAt timestamp,
 updateAt timestamp,
 fkTipo int not null,
-constraint fkTipo foreing key (fkTipo) references tipoUsuario(idTipo)
+constraint fkTipo foreign key (fkTipo) references tipoUsuario(idTipo)
 );
 
 
@@ -39,7 +40,7 @@ logradouro varchar(100) not null,
 numero int not null,
 cidade varchar(45) not null,
 bairro varchar(45) not null,
-complemento varchar(45)
+complemento varchar(45),
 fkDonoPropriedade int null
 );
 
@@ -50,10 +51,11 @@ idEmpresa int primary key auto_increment,
 razaoSocial varchar(45) not null,
 nomeFantasia varchar(45) not null,
 inscricaoEstadual varchar(45) not null,
+cnpj int,
 createAt timestamp,
 updateAt timestamp,
 fk_endereco int not null,
-constraint fk_endereco foreign key (fk_endereco) references usuario (idEndereco),
+constraint fk_endereco foreign key (fk_endereco) references endereco (idEndereco),
 fk_usuario int not null,
 constraint fk_usuario foreign key (fk_usuario) references usuario (idUsuario)
 );
@@ -64,7 +66,7 @@ idAssociar int primary key,
 fkUsuario int not null,
 fkEmpresa int not null,
 constraint fkUsuario foreign key (fkUsuario) references usuario (idUsuario),
-constraint fkEmpresa foreign key (fkEmpresa) references usuario (cnpj)
+constraint fkEmpresa foreign key (fkEmpresa) references empresa (idEmpresa)
 );
 
 -- CADASTRO DE PROPRIEDADE
@@ -73,12 +75,12 @@ idPropriedade int primary key,
 tamanho int not null,
 createAt timestamp,
 fk_endereco int not null,
-constraint fk_endereco foreign key (fk_endereco) references usuario (idEndereco),
+constraint fk_endereco2 foreign key (fk_endereco) references endereco (idEndereco),
 fk_empresa int not null,
-constraint fk_empresa foreign key (fk_empresa) references usuario (cnpj)
+constraint fk_empresa foreign key (fk_empresa) references empresa (idEmpresa)
 );
 
-alter table endereco add constraint fkDonoPropriedade foreing (fkDonoPropriedade) references propriedade(idPropriedade);
+alter table endereco add constraint fkDonoPropriedade foreign key (fkDonoPropriedade) references propriedade(idPropriedade);
 
 -- DADOS CAPTURADOS DAS BASES
 create table Synapsys.leitura(
