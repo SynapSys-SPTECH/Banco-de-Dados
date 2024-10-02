@@ -8,19 +8,15 @@ use Synapsys;
 -- TIPOS DE USUÁRIO
 create table Synapsys.tipoUsuario(
 idTipo int auto_increment,
-empresario int,
-investidor int,
-empInv int,
-desEmpresario varchar(100),
-desInvestidor varchar(100),
-desEmpInv varchar(100),
-Primary key(idTipo ,empresario, investidor, empInv)
+descricao varchar(45),
+primary key(idTipo)
 );
 
 
 -- CADASTRO DO USUÁRIO 
 create table Synapsys.usuario(
 idUsuario int primary key auto_increment,
+nome varchar(45) not null,
 email varchar(45) not null,
 senha varchar(45) not null,
 telefoneContato char(11) not null,
