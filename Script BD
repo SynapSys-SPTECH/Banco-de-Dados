@@ -91,4 +91,10 @@ estado varchar(45) not null,
 createAt timestamp(2)
 );
 
+-- INSERT (TIPO USUARIO):
+insert into Synapsys.tipoUsuario (idTipo, descricao)
+VALUES (1, "Empresario"),
+       (2, "Investidor"),
+       (3, "Empresario e Investidor");
+
 -- OBS* direção do vento é em graus e velocidade em m/s.
