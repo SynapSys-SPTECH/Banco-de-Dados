@@ -1,7 +1,7 @@
 -- BANCO DE DADOS SYNAPSYS
-drop database if exists SynapSys;
+drop database if exists Synapsys;
 -- CRIAÇÃO DO DATABASE
-CREATE DATABASE SynapSys;
+CREATE DATABASE Synapsys;
 use Synapsys;
 
 
