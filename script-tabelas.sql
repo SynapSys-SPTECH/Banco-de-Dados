@@ -81,15 +81,15 @@ alter table endereco add constraint fkDonoPropriedade foreign key (fkDonoProprie
 
 -- DADOS CAPTURADOS DAS BASES
 create table Synapsys.leitura(
-idLeitura int primary key,
+idLeitura int auto_increment primary key,
 dia date not null,
 hora time not null,
-direcaoVento int not null,
-rajadaMax double not null,
-velocidadeHoraria double not null,
+direcaoVento int,
+rajadaMax double,
+velocidadeHoraria double,
 cidade varchar(45) not null,
 estado varchar(45) not null,
-createAt timestamp(2)
+createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- INSERT (TIPO USUARIO):
