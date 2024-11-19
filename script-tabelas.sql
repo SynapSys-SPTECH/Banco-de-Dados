@@ -1,7 +1,7 @@
 -- BANCO DE DADOS SYNAPSYS
-drop database if exists Synapsys;
+drop database if exists SynapSys;
 -- CRIAÇÃO DO DATABASE
-CREATE DATABASE Synapsys;
+CREATE DATABASE SynapSys;
 use Synapsys;
 
 
@@ -20,7 +20,7 @@ nome varchar(45) not null,
 email varchar(45) not null,
 senha varchar(45) not null,
 telefoneContato char(11) not null,
-createAt timestamp,
+createAt timestamp DEFAULT CURRENT_TIMESTAMP,
 updateAt timestamp,
 fkTipo int not null,
 status varchar(15) default 'habilitado',
@@ -38,7 +38,9 @@ numero int not null,
 cidade varchar(45) not null,
 bairro varchar(45) not null,
 complemento varchar(45),
-fkDonoPropriedade int null
+fkDonoPropriedade int null,
+createAt timestamp DEFAULT CURRENT_TIMESTAMP,
+updateAt timestamp
 );
 
 
@@ -49,8 +51,9 @@ razaoSocial varchar(45) not null,
 nomeFantasia varchar(45) not null,
 inscricaoEstadual varchar(45) not null,
 cnpj char(14),
-createAt timestamp,
+createAt timestamp DEFAULT CURRENT_TIMESTAMP,
 updateAt timestamp,
+status varchar(15) default 'habilitado',
 fk_endereco int not null,
 constraint fk_endereco foreign key (fk_endereco) references endereco (idEndereco),
 fk_usuario int not null,
@@ -70,7 +73,9 @@ constraint fkEmpresa foreign key (fkEmpresa) references empresa (idEmpresa)
 create table Synapsys.propriedade(
 idPropriedade int primary key,
 tamanho int not null,
-createAt timestamp,
+createAt timestamp DEFAULT CURRENT_TIMESTAMP,
+updateAt timestamp,
+status varchar(15) default 'habilitado',
 fk_endereco int not null,
 constraint fk_endereco2 foreign key (fk_endereco) references endereco (idEndereco),
 fk_empresa int not null,
@@ -82,13 +87,15 @@ alter table endereco add constraint fkDonoPropriedade foreign key (fkDonoProprie
 -- DADOS CAPTURADOS DAS BASES
 create table Synapsys.leitura(
 idLeitura int auto_increment primary key,
-dia date not null,
-hora time not null,
+dataHora datetime,
+latitude double,
+longitude double,
 direcaoVento int,
 rajadaMax double,
 velocidadeHoraria double,
-cidade varchar(45) not null,
+municipio varchar(45) not null,
 estado varchar(45) not null,
+updateAt timestamp,
 createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
