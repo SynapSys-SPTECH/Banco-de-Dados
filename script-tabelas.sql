@@ -17,7 +17,7 @@ primary key(idTipo)
 create table Synapsys.usuario(
 idUsuario int primary key auto_increment,
 nome varchar(45) not null,
-email varchar(45) not null,
+email varchar(45) not null unique,
 senha varchar(45) not null,
 telefoneContato char(11) not null,
 createAt timestamp DEFAULT CURRENT_TIMESTAMP,
