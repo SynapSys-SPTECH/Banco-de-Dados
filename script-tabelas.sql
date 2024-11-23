@@ -71,7 +71,7 @@ constraint fkEmpresa foreign key (fkEmpresa) references empresa (idEmpresa)
 
 -- CADASTRO DE PROPRIEDADE
 create table Synapsys.propriedade(
-idPropriedade int primary key,
+idPropriedade int primary key auto_increment,
 tamanho int not null,
 createAt timestamp DEFAULT CURRENT_TIMESTAMP,
 updateAt timestamp,
