@@ -98,12 +98,12 @@ estado varchar(45) not null,
 createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
---SLACK
+-- SLACK
 create table Synapsys.slack(
 idMensagem int auto_increment primary key,
 descricao varchar(200) not null,      
 createAt timestamp DEFAULT CURRENT_TIMESTAMP,
-updateAt timestamp,
+updateAt timestamp
 );
 
 -- INSERT (TIPO USUARIO):
