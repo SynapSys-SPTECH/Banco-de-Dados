@@ -99,6 +99,15 @@ updateAt timestamp,
 createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- SLACK
+create table Synapsys.slack(
+idMensagem int auto_increment primary key,
+titulo varchar(100),
+descricao varchar(200) not null,      
+createAt timestamp DEFAULT CURRENT_TIMESTAMP,
+updateAt timestamp
+);
+
 -- INSERT (TIPO USUARIO):
 insert into Synapsys.tipoUsuario (idTipo, descricao)
 VALUES (1, "Empresario"),
