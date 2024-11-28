@@ -111,7 +111,10 @@ updateAt timestamp
 -- INSERT (TIPO USUARIO):
 insert into Synapsys.tipoUsuario (idTipo, descricao)
 VALUES (1, "Empresario"),
-       (2, "Investidor"),
-       (3, "Empresario e Investidor");
+       (2, "Gestor da Aplicação");
+
+-- INSERT (USUARIO DE ADM SYNAPSYS):
+INSERT INTO Synapsys.usuario (nome, email, senha, telefoneContato, fkTipo)
+VALUES ('Adm Synapsys', 'admin@synapsys.com', 'synapsys123', '11975107477', 2);
 
 -- OBS* direção do vento é em graus e velocidade em m/s.
