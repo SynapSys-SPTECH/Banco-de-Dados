@@ -1,5 +1,3 @@
--- BANCO DE DADOS SYNAPSYS
-drop database if exists SynapSys;
 -- CRIAÇÃO DO DATABASE
 CREATE DATABASE SynapSys;
 use Synapsys;
@@ -53,7 +51,7 @@ inscricaoEstadual varchar(45) not null,
 cnpj char(14),
 createAt timestamp DEFAULT CURRENT_TIMESTAMP,
 updateAt timestamp,
-status varchar(15) default 'habilitado',
+status varchar(15) default 'Ativo',
 fk_endereco int not null,
 constraint fk_endereco foreign key (fk_endereco) references endereco (idEndereco),
 fk_usuario int not null,
@@ -75,7 +73,7 @@ idPropriedade int primary key auto_increment,
 tamanho int not null,
 createAt timestamp DEFAULT CURRENT_TIMESTAMP,
 updateAt timestamp,
-status varchar(15) default 'habilitado',
+status varchar(15) default 'Ativo',
 fk_endereco int not null,
 constraint fk_endereco2 foreign key (fk_endereco) references endereco (idEndereco),
 fk_empresa int not null,
